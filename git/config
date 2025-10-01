@@ -6,6 +6,6 @@
 [pull]
 	rebase = true
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [fetch]
 	prune = true
