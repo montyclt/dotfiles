@@ -1,72 +1,69 @@
 {
   "reload_style_on_change": true,
-  "layer": "top",
-  "position": "top",
+  "layer": "bottom",
+  "position": "bottom",
   "spacing": 0,
-  "height": 26,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
+  "height": 48,
+  "output": "DP-3",
+
+  "modules-left": [
+    "custom/omarchy"
+  ],
+
+  "modules-center": [
+    "sway/mode"
+  ],
+
   "modules-right": [
-    "group/tray-expander",
-    "bluetooth",
+    "tray",
+    "custom/spacer",
     "network",
     "pulseaudio",
-    "cpu",
-    "battery"
+    "custom/spacer",
+    "clock#es",
+    "custom/spacer",
+    "clock#mx",
+    "custom/spacer",
+    "clock#ar",
+    "custom/spacer",
+    "clock#th",
+    "custom/spacer",
+    "clock#utc",
+    "custom/spacer",
+    "custom/date"
   ],
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3 ",
-      "4": "4",
-      "5": "5",
-      "6": "6 ",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "active": "󱓻"
-    },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": [],
-      "8": [],
-      "9": []
+
+  "sway/mode": {
+    "format": "{}",
+    "tooltip": false,
+    "format-map": {
+      "": "normal",
+      "resize": "resize"
     }
   },
+
   "custom/omarchy": {
     "format": "<span font='omarchy'>\ue900</span>",
     "on-click": "omarchy-menu",
-    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
-  },
-  "custom/update": {
-    "format": "",
-    "exec": "omarchy-update-available",
-    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
-    "tooltip-format": "Omarchy update available",
-    "signal": 7,
-    "interval": 3600
+    "tooltip-format": "Omarchy Menu\n\nOption + Space"
   },
 
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "$TERMINAL -e btop"
+  "custom/walker": {
+    "format": "",
+    "on-click": "walker",
+    "tooltip": "Lanzador (Walker)"
   },
-  "clock": {
-    "format": "{:L%A %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
-    "on-click-right": "omarchy-cmd-tzupdate"
+
+  "custom/separator": {
+    "format": "  |  ",
+    "tooltip": false
   },
+
+  "custom/spacer": {
+    "format": "  ",
+    "tooltip": false
+  },
+
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
@@ -80,32 +77,7 @@
     "spacing": 1,
     "on-click": "omarchy-launch-wifi"
   },
-  "battery": {
-    "format": "{capacity}% {icon}",
-    "format-discharging": "{icon}",
-    "format-charging": "{icon}",
-    "format-plugged": "",
-    "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-    "format-full": "󰂅",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-    "interval": 5,
-    "on-click": "omarchy-menu power",
-    "states": {
-      "warning": 20,
-      "critical": 10
-    }
-  },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂲",
-    "format-connected": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
-  },
+
   "pulseaudio": {
     "format": "{icon}",
     "on-click": "$TERMINAL --class=Wiremix -e wiremix",
@@ -117,26 +89,46 @@
       "default": ["", "", ""]
     }
   },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
-    },
-    "modules": ["custom/expand-icon", "tray"]
-  },
-  "custom/expand-icon": {
-    "format": " ",
-    "tooltip": false
-  },
-  "custom/screenrecording-indicator": {
-    "on-click": "omarchy-cmd-screenrecord",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
-    "signal": 8,
-    "return-type": "json"
-  },
+
   "tray": {
     "icon-size": 12,
     "spacing": 12
+  },
+
+  "clock#es": {
+    "timezone": "Europe/Madrid",
+    "format": " ESP\n{:%H:%M}",
+    "tooltip": false
+  },
+
+  "clock#mx": {
+    "timezone": "America/Mexico_City",
+    "format": " MEX\n{:%H:%M}",
+    "tooltip": false
+  },
+
+  "clock#ar": {
+    "timezone": "America/Argentina/Buenos_Aires",
+    "format": " ARG\n{:%H:%M}",
+    "tooltip": false
+  },
+
+  "clock#th": {
+    "timezone": "Asia/Bangkok",
+    "format": " THA\n{:%H:%M}",
+    "tooltip": false
+  },
+
+  "clock#utc": {
+    "timezone": "UTC",
+    "format": " UTC\n{:%H:%M}",
+    "tooltip": false
+  },
+
+  "custom/date": {
+    "exec": "date +'%d/%m/%Y'",
+    "interval": 60,
+    "format": "{}",
+    "tooltip": false
   }
 }
