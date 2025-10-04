@@ -1,0 +1,48 @@
+from xwaykeyz.models.key import Key
+from xwaykeyz.transform import *
+import re
+
+environ_api(session_type='wayland', wl_compositor='sway')
+
+# FORZAR RE-INSTANCIACIÓN del WindowContextProvider con valores correctos
+from xwaykeyz.lib.window_context import WindowContextProvider
+from xwaykeyz.config_api import _ENVIRON
+import xwaykeyz.transform as transform_module
+transform_module.window_context = WindowContextProvider(_ENVIRON['session_type'], _ENVIRON['wl_compositor'])
+
+modmap("macOS left side swap", {
+    Key.LEFT_CTRL: Key.LEFT_META,     # Physical Ctrl -> Logical Meta (Apple Ctrl)
+    Key.LEFT_META: Key.LEFT_ALT,      # Physical Meta -> Logical Alt (Apple Opt)
+    Key.LEFT_ALT: Key.LEFT_CTRL,      # Physical Alt -> Logical Ctrl (Apple Cmd)
+})
+
+ACmd = "C"          # Command key
+AOpt = "Alt"        # Option key
+ACtrl = "Meta"      # Control key
+
+include("jetbrains.py")
+
+keymap("macOS global shortcuts", {
+    C(f"{ACmd}-Space"): C(f"Alt-Meta-a"),
+    C(f"{ACtrl}-Space"): C("C-Space"),
+
+    # Word navigation with Option
+    C(f"{AOpt}-Left"): C("C-Left"),
+    C(f"{AOpt}-Right"): C("C-Right"),
+
+    # Line navigation with Cmd
+    C(f"{ACmd}-Left"): C("Home"),
+    C(f"{ACmd}-Right"): C("End"),
+
+    # Tab navigation with Cmd+Numbers
+    **{C(f"{ACmd}-KEY_{i}"): C(f"Alt-KEY_{i}") for i in range(10)},
+
+    # Cmd+Backspace: delete entire line
+    C(f"{ACmd}-Backspace"): [C("Shift-Home"), C("Delete")],
+
+    # Cmd+Tab: window switching
+    C(f"{ACmd}-Tab"): C("Super-Right"),
+    C(f"{ACmd}-Shift-Tab"): C("Super-Left"),
+})
+
+#include("file_managers.py")
