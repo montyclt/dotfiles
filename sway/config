@@ -1,11 +1,12 @@
 exec waybar
 focus_follows_mouse no
-for_window [app_id="Alacritty"] floating enable
+for_window [floating] focus
 
 ### Variables
-set $mod Mod4
 set $cmd Control
 set $opt Alt
+set $ctrl Mod4
+
 set $term alacritty
 set $launcher walker -p "Start…"
 set $sysmenu omarchy-menu
