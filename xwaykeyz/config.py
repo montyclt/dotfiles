@@ -23,16 +23,21 @@ ACtrl = "Meta"      # Control key
 include("jetbrains.py")
 
 keymap("macOS global shortcuts", {
+    # Walker
     C(f"{ACmd}-Space"): C(f"Alt-Meta-a"),
     C(f"{ACtrl}-Space"): C("C-Space"),
 
     # Word navigation with Option
     C(f"{AOpt}-Left"): C("C-Left"),
     C(f"{AOpt}-Right"): C("C-Right"),
+    C(f"{AOpt}-Shift-Left"): C("C-Shift-Left"),
+    C(f"{AOpt}-Shift-Right"): C("C-Shift-Right"),
 
     # Line navigation with Cmd
     C(f"{ACmd}-Left"): C("Home"),
     C(f"{ACmd}-Right"): C("End"),
+    C(f"{ACmd}-Shift-Left"): C("Shift-Home"),
+    C(f"{ACmd}-Shift-Right"): C("Shift-End"),
 
     # Tab navigation with Cmd+Numbers
     **{C(f"{ACmd}-KEY_{i}"): C(f"Alt-KEY_{i}") for i in range(10)},
