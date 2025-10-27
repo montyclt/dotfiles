@@ -1,14 +1,9 @@
-from xwaykeyz.models.key import Key
-from xwaykeyz.transform import *
-import re
+from xwaykeyz.config_api import *
+from xwaykeyz.lib.key_context import KeyContext
+from xwaykeyz.lib.logger import debug, error
+from xwaykeyz.models.modifier import Modifier
 
 environ_api(session_type='wayland', wl_compositor='sway')
-
-# FORZAR RE-INSTANCIACIÓN del WindowContextProvider con valores correctos
-from xwaykeyz.lib.window_context import WindowContextProvider
-from xwaykeyz.config_api import _ENVIRON
-import xwaykeyz.transform as transform_module
-transform_module.window_context = WindowContextProvider(_ENVIRON['session_type'], _ENVIRON['wl_compositor'])
 
 modmap("macOS left side swap", {
     Key.LEFT_CTRL: Key.LEFT_META,     # Physical Ctrl -> Logical Meta (Apple Ctrl)
@@ -21,6 +16,7 @@ AOpt = "Alt"        # Option key
 ACtrl = "Meta"      # Control key
 
 include("jetbrains.py")
+include("file_managers.py")
 
 keymap("macOS global shortcuts", {
     # Walker
@@ -32,6 +28,7 @@ keymap("macOS global shortcuts", {
     C(f"{AOpt}-Right"): C("C-Right"),
     C(f"{AOpt}-Shift-Left"): C("C-Shift-Left"),
     C(f"{AOpt}-Shift-Right"): C("C-Shift-Right"),
+    C(f"{AOpt}-Backspace"): C("C-Backspace"),
 
     # Line navigation with Cmd
     C(f"{ACmd}-Left"): C("Home"),
@@ -49,5 +46,3 @@ keymap("macOS global shortcuts", {
     C(f"{ACmd}-Tab"): C("Super-Right"),
     C(f"{ACmd}-Shift-Tab"): C("Super-Left"),
 })
-
-#include("file_managers.py")
