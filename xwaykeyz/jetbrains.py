@@ -25,7 +25,7 @@ keymap("Jetbrains", {
     C("C-w"):                   C("C-F4"),                      # Close active editor tab
     # Refactoring
     C("C-Delete"):              C("Alt-Delete"),                # Safe Delete
-    C("C-T"):                   C("C-Alt-Shift-t"),             # Refactor this
+    #C("C-T"):                   C("C-Alt-Shift-t"),             # Refactor this
     # Navigation
     C("C-o"):                   C("C-n"),                       # Go to class
     C("C-Shift-o"):             C("C-Shift-n"),                 # Go to file
