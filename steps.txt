@@ -4,6 +4,7 @@ Install Arch with:
   - Systemd-boot
   - PipeWire
   - Linux (no zen, no lts, no hardened)
+  - networkmanager
 
 Install packages
   - sway
