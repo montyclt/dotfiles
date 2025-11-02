@@ -1,0 +1,103 @@
+Install Arch with:
+  - Cifrado LUKS sin LVM
+  - Timershift
+  - Systemd-boot
+  - PipeWire
+  - Linux (no zen, no lts, no hardened)
+
+Install packages
+  - sway
+  - swaylock
+  - foot
+  - nano
+  - base-devel
+  - git
+  - rustup
+  - rofi
+  - nvidia-open
+  - nvidia-utils
+  - xorg-xwayland
+  - vulkan-swrast
+  - firefox
+  - gnome-keyring
+  - libsecret
+  - filezilla
+
+Install Paru
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
+    cd ..
+    sudo rm -rf go paru
+
+Install AUR packages:
+   - powershell-bin
+   - warp-terminal-bin
+
+Configuere systemd-boot
+    WRITE INTO: /boot/loader/loader.conf
+    """
+    timeout menu-force
+    """
+
+Configure rustup
+    rustup default stable
+
+Configure automatic login
+    sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+    WRITE INTO: /etc/systemd/system/getty@tty1.service.d/autologin.conf
+    """
+    [Service]
+    ExecStart=
+    ExecStart=-/sbin/agetty --autologin tu_usuario --noclear %I $TERM
+    """
+
+Configure keyring:
+    Add to /etc/pam.d/login:
+    auth       optional     pam_gnome_keyring.so
+    session    optional     pam_gnome_keyring.so auto_start
+
+Install xwaykeyz
+    !todo
+
+
+Configure auto-sway
+    WRITE to ~/.bashrc:
+    """
+    if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec dbus-run-session sway
+    fi
+    """
+    (!todo should $WAYLAND_DISPLAY checked here on only the tty1?)
+
+Create .dotfiles links
+    (!todo link ~/.dotfiles to the correct directory depending on the application):
+    - .dotfiles/environment/: environment variables files here
+    - .dotfiles/git/: git config and global gitignore here
+    - .dotfiles/sway/: sway config files here
+    - .dotfiles/xwaykeyz/: xwayheyz config files here
+
+-------------------------
+Applications:
+ - 1Password
+ - AnyDesk
+ - VMWare Workstation
+ - Calculator (gnome)
+ - Docker
+ - Evince
+ - Nemo
+ - imv
+ - Bruno
+ - Spotify
+ - LM Studio
+ - Zen Browser
+
+ Rufi menu:
+ - Applications
+ - Install package
+ - Install AUR package
+ - Remove package
+ - Update packages
+ - Lock
+ - Shutdown
+ - Reboot
