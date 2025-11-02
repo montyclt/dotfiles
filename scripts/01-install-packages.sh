@@ -26,4 +26,6 @@ PACKAGES=(
 sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm --needed "${PACKAGES[@]}"
 
+rustup default stable
+
 log_info "Packages installed successfully"

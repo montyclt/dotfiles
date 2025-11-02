@@ -18,10 +18,8 @@ log_step "Starting Arch Linux configuration"
 # Execute scripts in order
 scripts=(
     "01-install-packages.sh"
-    "02-install-paru.sh"
+    "02-install-aur.sh"
     "03-configure-systemd-boot.sh"
-    "04-configure-rustup.sh"
-    "02b-install-aur-packages.sh"
     "05-configure-autologin.sh"
     "06-configure-keyring.sh"
     "07-install-xwaykeyz.sh"
