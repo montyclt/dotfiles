@@ -15,7 +15,6 @@ cd paru
 makepkg -si --noconfirm
 cd ..
 rm -rf paru go
-bash "$1/scripts/02b-install-aur-packages.sh"
 paru -S --noconfirm --needed "${PACKAGES[@]}"
 
 log_info "Paru installed successfully"
