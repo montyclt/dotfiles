@@ -21,10 +21,10 @@ ln -sfn "$SCRIPT_DIR/git" "$HOME/.config/git"
 ln -sfn "$SCRIPT_DIR/sway" "$HOME/.config/sway"
 
 # xwaykeyz config
-mkdir -p "/home/keymapper/.config"
-ln -sfn "$SCRIPT_DIR/xwaykeyz" "/home/keymapper/.config/xwaykeyz"
-setfacl -R -m u:keymapper:rX "$SCRIPT_DIR/xwaykeyz"
-setfacl -R -d -m u:keymapper:rX "$SCRIPT_DIR/xwaykeyz"
+# mkdir -p "/home/keymapper/.config"
+# ln -sfn "$SCRIPT_DIR/xwaykeyz" "/home/keymapper/.config/xwaykeyz"
+# setfacl -R -m u:keymapper:rX "$SCRIPT_DIR/xwaykeyz"
+# setfacl -R -d -m u:keymapper:rX "$SCRIPT_DIR/xwaykeyz"
 
 # rofi config
 ln -sfn "$SCRIPT_DIR/rofi" "$HOME/.config/rofi"
