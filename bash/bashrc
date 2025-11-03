@@ -1,6 +1,13 @@
+set -a
+for conf in ~/.config/environment/common/*.conf; do
+    [ -f "$conf" ] && source "$conf"
+done
+
+for conf in ~/.config/environment/shell/*.conf; do
+    [ -f "$conf" ] && source "$conf"
+done
+set +a
+
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec uwsm start sway.desktop
 fi
-
-export DOTNET_ROOT=$HOME/.dotnet/
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools

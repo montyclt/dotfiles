@@ -22,7 +22,6 @@ scripts=(
     "05-configure-autologin.sh"
     "06-configure-keyring.sh"
     "07-install-xwaykeyz.sh"
-    "08-configure-sway-launch.sh"
     "09-setup-dotfiles.sh"
     "10-create-rofi-menu.sh"
 )
