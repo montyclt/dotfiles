@@ -7,6 +7,7 @@ PACKAGES=(
     "acl"
     "uwsm"
     "sway"
+    "swaybg"
     "swaylock"
     "foot"
     "nano"
