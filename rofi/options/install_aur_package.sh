@@ -1,9 +1,9 @@
-paru#!/bin/bash
+#!/bin/bash
 set -euo pipefail
 
 source "$HOME/.config/rofi/lib.sh"
 
-pkg=$(rofi -dmenu -i -p "paru -S") || exit 0
+pkg=$(pacman -Slq | rofi -dmenu -i -p "Install package") || exit 0
 [[ -z "${pkg}" ]] && exit 0
 
-run_in_term "paru -S --noconfirm --needed \"${pkg}\""
+run_in_term "sudo pacman -S --needed \"${pkg}\""
