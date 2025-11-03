@@ -11,7 +11,7 @@ echo "" >> "$HOME/.bashrc"
 echo "source \"$SCRIPT_DIR/bash/bashrc\"" >> "$HOME/.bashrc"
 
 # Environment files
-sudo install -m 755 -o root -g root "$SCRIPT_DIR/systemd/dotfiles-environment-generator.sh" /usr/lib/systemd/user-environment-generators/50-dotfiles-environment-generator
+sudo install -m 755 -o root -g root "$SCRIPT_DIR/systemd/session-environment-generator.sh" /usr/lib/systemd/user-environment-generators/50-session-environment-generator
 ln -sfn "$SCRIPT_DIR/environment" "$HOME/.config/environment"
 
 # Git config
