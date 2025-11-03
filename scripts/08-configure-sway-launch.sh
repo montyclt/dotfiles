@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 source "$1/scripts/00-common.sh"
 log_step "Adding auto-sway to ~/.bashrc"
