@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euo pipefail
 
-swaylock
+swaylock -f -l -e -i $HOME/.config/sway/wallpaper.jpg

@@ -5,6 +5,8 @@ log_step "Installing official repository packages"
 
 PACKAGES=(
     "acl"
+    "waybar"
+    "fastfetch"
     "uwsm"
     "sway"
     "swaybg"

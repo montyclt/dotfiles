@@ -18,7 +18,7 @@ log_step "Starting Arch Linux configuration"
 scripts=(
     "01-install-packages.sh"
     "02-install-aur.sh"
-    "03-configure-systemd-boot.sh"
+    "03-configure-limine.sh"
     "05-configure-autologin.sh"
     "06-configure-keyring.sh"
     "07-install-xwaykeyz.sh"
