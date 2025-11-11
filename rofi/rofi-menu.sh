@@ -1,7 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-MENU_FILE="${HOME}/.config/rofi/menu.conf"
+# Allow passing a relative menu file (within ~/.config/rofi/) as an optional argument
+if [[ $# -ge 1 ]]; then
+  MENU_FILE="${HOME}/.config/rofi/$1"
+else
+  MENU_FILE="${HOME}/.config/rofi/menus/main.conf"
+fi
 
 error() {
   rofi -e "$1";
@@ -39,6 +44,11 @@ done < "$MENU_FILE"
 
 [[ -z "$rel_path" ]] && exit 0
 
-# Resolve and execute the target option script from the config directory
-option_script="${HOME}/.config/rofi/${rel_path}"
-exec bash "$option_script"
+# Resolve and execute the target: if it's a submenu (.conf), re-run this script; if it's a script (.sh), execute it.
+resolved_path="${HOME}/.config/rofi/${rel_path}"
+if [[ "$rel_path" == *.conf ]]; then
+  # Re-enter rofi-menu with the submenu config
+  exec bash "$0" "$rel_path"
+else
+  exec bash "$resolved_path"
+fi

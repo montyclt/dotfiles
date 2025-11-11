@@ -7,7 +7,8 @@
   "output": "DP-7",
 
   "modules-left": [
-    "custom/omarchy"
+    "custom/menu",
+    "sway/workspaces"
   ],
 
   "modules-center": [
@@ -40,6 +41,12 @@
       "": "normal",
       "resize": "resize"
     }
+  },
+  
+  "custom/menu": {
+    "format": "START",
+    "on-click": "rofi-menu",
+    "tooltip-format": "Start menu\n\nOption + Space"
   },
 
   "custom/omarchy": {
