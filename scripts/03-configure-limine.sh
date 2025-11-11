@@ -30,7 +30,7 @@ sudo awk -v IGNORECASE=1 '
   /^\/.*fallback/ {skip=1; next}
   /^\/[^\/]/ { if (skip) { skip=0 } }
   { if (!skip) print }
-' "$LIMINE_CONF" > "$LIMINE_CONF.tmp"
+' "$LIMINE_CONF" | sudo tee "$LIMINE_CONF.tmp" > /dev/null
 sudo mv "$LIMINE_CONF.tmp" "$LIMINE_CONF"
 
 # 3) Append the netboot entry at the end
