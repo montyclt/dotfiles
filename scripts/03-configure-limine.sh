@@ -30,12 +30,14 @@ sudo bash -c "cat > '$LIMINE_CONF' <<EOF
 timeout: no
 
 /Arch Linux
-    //linux
+    //Boot
     $LINUX_ENTRY
 
-    //netboot
+    //Netboot install
         protocol: efi_chainload
         image_path: boot():/EFI/arch/ipxe-arch.efi
+
+    //Snapshots
 
 /Windows 11
     protocol: efi_chainload
