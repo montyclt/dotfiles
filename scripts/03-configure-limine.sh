@@ -29,20 +29,17 @@ LINUX_ENTRY=$(sudo awk '
 sudo bash -c "cat > '$LIMINE_CONF' <<EOF
 timeout: no
 
-/+Arch Linux
-  //linux
-$LINUX_ENTRY
+/Arch Linux
+    //linux
+    $LINUX_ENTRY
 
-  //netboot
-  protocol: efi_chainload
-  image_path: boot():/EFI/arch/ipxe-arch.efi
-
-  //Snapshots
-  comment: Selecting any snapshot to boot into it.
+    //netboot
+        protocol: efi_chainload
+        image_path: boot():/EFI/arch/ipxe-arch.efi
 
 /Windows 11
-  protocol: efi_chainload
-  image_path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    protocol: efi_chainload
+    image_path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
 EOF"
 
 log_info "Limine configuration updated"
